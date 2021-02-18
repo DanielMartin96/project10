@@ -16,6 +16,7 @@ const UpdateCourse = ({ auth }) => {
 
   const courseId = window.location.pathname.split("/");
 
+  // gets the course and user when the page is renders
   useEffect(() => {
     async function fetchCourse() {
       const res = await axios.get(
@@ -34,6 +35,7 @@ const UpdateCourse = ({ auth }) => {
     fetchCourse();
   }, []);
 
+  // submits a put request to the relevant id when the form is submitted
   const onSubmit = async (e) => {
     e.preventDefault();
     renderErrors();
@@ -58,6 +60,7 @@ const UpdateCourse = ({ auth }) => {
     }
   };
 
+  // looks at the state to see if all the relevant info is there. If its not, it sets error messages in the state to me displayed to the user
   const renderErrors = () => {
     if (title.length === 0) {
       setTitleError('Please provide a value for "Title"');
@@ -78,6 +81,7 @@ const UpdateCourse = ({ auth }) => {
     }
   };
 
+  // displays errors on the pahge if the errors state is set at true
   return (
     <div className="bounds course--detail">
       <h1>Update Course</h1>

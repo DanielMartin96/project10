@@ -4,6 +4,7 @@ import axios from "axios";
 const Courses = () => {
   const [courses, setCourses] = useState([]);
 
+  // gets courses then sets the courses state
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get("http://localhost:5000/api/courses");
@@ -13,6 +14,7 @@ const Courses = () => {
     fetchData();
   }, []);
 
+  // renders courses to screen
   const displayCourse = () => {
     if (courses.length === 0) {
       return <div></div>;

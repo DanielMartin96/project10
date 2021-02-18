@@ -12,6 +12,7 @@ const CreateCourse = ({ auth }) => {
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
 
+  // only posts when there is info in the title and description
   const onSubmit = async (e) => {
     e.preventDefault();
     renderErrors();
@@ -36,6 +37,7 @@ const CreateCourse = ({ auth }) => {
     }
   };
 
+  // sets errors in state to be shown to the user if there is enough info in the relevant inputs
   const renderErrors = () => {
     if (title.length === 0) {
       setTitleError('Please provide a value for "Title"');
@@ -56,6 +58,7 @@ const CreateCourse = ({ auth }) => {
     }
   };
 
+  // only shows errors when the errors state is at true, Gets set to true in the renderErrors() function
   return (
     <div className="bounds course--detail">
       <h1>Create Course</h1>

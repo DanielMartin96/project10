@@ -22,6 +22,7 @@ const App = () => {
     window.localStorage.getItem("auth") || null
   );
 
+  // signs in user with the data from the form
   const handleSignIn = async (username, password) => {
     const user = await axios.get("http://localhost:5000/api/users", {
       headers: {
@@ -29,6 +30,7 @@ const App = () => {
       },
     });
 
+    // sets auth info and user in local storage
     if (user) {
       window.localStorage.setItem("user", JSON.stringify(user.data));
       setUser(user.data);
@@ -44,6 +46,7 @@ const App = () => {
     return null;
   };
 
+  // removes all credentials from local storage
   const handleSignOut = () => {
     window.localStorage.removeItem("user");
     setUser(null);

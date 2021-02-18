@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = ({ user, handleSignOut }) => {
+const Header = ({ user }) => {
+  // if user, will show signout and users name, if no user, shows sign in and sign up
   const renderHeader = () => {
     if (!user) {
       return (

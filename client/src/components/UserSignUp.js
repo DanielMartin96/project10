@@ -15,6 +15,7 @@ const UserSignUp = ({ handleSignIn }) => {
   const [passwordError, setPasswordError] = useState("");
   const [passwordMatchError, setPasswordMatchError] = useState("");
 
+  // posts req to users endpoint with all the info from state - only if passwords match
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -36,6 +37,7 @@ const UserSignUp = ({ handleSignIn }) => {
     }
   };
 
+  // looks at info in the state and sets relevant state if the if statements run
   const renderErrors = () => {
     if (firstName.length === 0) {
       setFirstNameError('Please provide a value for "First Name"');
@@ -73,8 +75,7 @@ const UserSignUp = ({ handleSignIn }) => {
     }
   };
 
-  console.log(handleSignIn);
-
+  // only renders errors if there are any
   return (
     <div className="bounds">
       <div className="grid-33 centered signin">

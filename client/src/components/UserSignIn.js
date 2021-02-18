@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import history from "../history";
 
 const UserSignIn = ({ handleSignIn, user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // on form submit uses the handleSignIn function provided through props
   const onSubmit = async (e) => {
     e.preventDefault();
     handleSignIn(email, password);
   };
-
-  if (user) {
-    <Redirect to="/" />;
-  }
 
   return (
     <div className="bounds">

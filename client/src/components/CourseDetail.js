@@ -8,6 +8,8 @@ const CourseDetail = ({ auth }) => {
   const [course, setCourse] = useState({});
   const [user, setUser] = useState({});
 
+  // gets course using the pathname
+  // sets user and course in state
   useEffect(() => {
     async function fetchCourse() {
       const res = await axios.get(
@@ -21,11 +23,13 @@ const CourseDetail = ({ auth }) => {
     fetchCourse();
   }, []);
 
+  // deletes course with path name
   const deleteCourse = async () => {
     await axios.delete(`http://localhost:5000/api${window.location.pathname}`);
     history.push("/");
   };
 
+  // renders the buttons if there is auth and the auth matches the course user id
   const renderButtons = () => {
     if (!auth) {
       return null;
