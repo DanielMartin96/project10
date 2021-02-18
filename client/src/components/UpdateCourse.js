@@ -4,12 +4,14 @@ import axios from "axios";
 import history from "../history";
 
 const UpdateCourse = ({ auth }) => {
-  const [course, setCourse] = useState({});
   const [user, setUser] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [estimatedTime, setEstimatedTime] = useState("");
   const [materialsNeeded, setMaterialsNeeded] = useState("");
+  const [errors, setErrors] = useState(false);
+  const [titleError, setTitleError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
 
   const courseId = window.location.pathname.split("/");
 
@@ -32,6 +34,7 @@ const UpdateCourse = ({ auth }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    renderErrors();
     try {
       const res = await axios.put(
         `http://localhost:5000/api/courses/${courseId[2]}`,
@@ -53,10 +56,43 @@ const UpdateCourse = ({ auth }) => {
     }
   };
 
+  const renderErrors = () => {
+    if (title.length === 0) {
+      setTitleError('Please provide a value for "Title"');
+      setErrors(true);
+    }
+
+    if (title.length > 0) {
+      setTitleError("");
+    }
+
+    if (description.length === 0) {
+      setDescriptionError('Please provide a value for "Description"');
+      setErrors(true);
+    }
+
+    if (description.length > 0) {
+      setDescriptionError("");
+    }
+  };
+
   return (
     <div className="bounds course--detail">
       <h1>Update Course</h1>
       <div>
+        {errors ? (
+          <div>
+            <h2 className="validation--errors--label">Validation errors</h2>
+            <div className="validation-errors">
+              <ul className="errors">
+                <li>{titleError}</li>
+                <li>{descriptionError}</li>
+              </ul>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <form onSubmit={onSubmit}>
           <div className="grid-66">
             <div className="course--header">
@@ -126,9 +162,9 @@ const UpdateCourse = ({ auth }) => {
             <button className="button" type="submit">
               Update Course
             </button>
-            <button className="button button-secondary" href="/">
+            <a className="button button-secondary" href="/">
               Cancel
-            </button>
+            </a>
           </div>
         </form>
       </div>

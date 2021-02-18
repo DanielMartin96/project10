@@ -36,8 +36,6 @@ const CreateCourse = ({ auth }) => {
     }
   };
 
-  console.log(auth);
-
   const renderErrors = () => {
     if (title.length === 0) {
       setTitleError('Please provide a value for "Title"');

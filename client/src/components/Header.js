@@ -18,7 +18,7 @@ const Header = ({ user, handleSignOut }) => {
       return (
         <nav>
           <span>{`Welcome ${user.firstName} ${user.lastName}`}</span>
-          <a className="signout" href="/" onClick={handleSignOut}>
+          <a className="signout" href="/signout">
             Sign Out
           </a>
         </nav>
