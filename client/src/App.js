@@ -11,6 +11,7 @@ import UpdateCourse from "./components/UpdateCourse";
 import UserSignUp from "./components/UserSignUp";
 import history from "./history";
 import axios from "axios";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   const [user, setUser] = useState(
@@ -64,15 +65,20 @@ const App = () => {
       <Route path="/signup">
         <UserSignUp handleSignIn={handleSignIn} />
       </Route>
-      <Route path="/courses/create">
-        <CreateCourse auth={authCred} />
-      </Route>
+      <PrivateRoute
+        path="/courses/create"
+        auth={authCred}
+        component={CreateCourse}
+      />
       <Route exact path="/courses/:id">
         <CourseDetail auth={user} />
       </Route>
-      <Route exact path="/courses/:id/update">
-        <UpdateCourse auth={authCred} />
-      </Route>
+      <PrivateRoute
+        exact
+        path="/courses/:id/update"
+        component={UpdateCourse}
+        auth={authCred}
+      />
     </Router>
   );
 };

@@ -156,7 +156,9 @@ const UserSignUp = ({ handleSignIn }) => {
               <button className="button" type="submit">
                 Sign Up
               </button>
-              <button href="/">Cancel</button>
+              <a className="button button-secondary" href="/">
+                Cancel
+              </a>
             </div>
           </form>
         </div>

@@ -26,23 +26,33 @@ const CourseDetail = ({ auth }) => {
     history.push("/");
   };
 
+  const renderButtons = () => {
+    if (!auth) {
+      return null;
+    }
+
+    if (auth.id === course.userId) {
+      return (
+        <span>
+          <a className="button" href={`/courses/${course.id}/update`}>
+            Update Course
+          </a>
+          <button className="button" onClick={deleteCourse}>
+            Delete Course
+          </button>
+        </span>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div>
       <div className="actions--bar">
         <div className="bounds">
           <div className="grid-100">
-            {auth.id === course.userId ? (
-              <span>
-                <a className="button" href={`/courses/${course.id}/update`}>
-                  Update Course
-                </a>
-                <button className="button" onClick={deleteCourse}>
-                  Delete Course
-                </button>
-              </span>
-            ) : (
-              ""
-            )}
+            {renderButtons()}
             <a className="button button-secondary" href="/">
               Return to List
             </a>

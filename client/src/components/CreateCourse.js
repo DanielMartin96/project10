@@ -32,6 +32,7 @@ const CreateCourse = ({ auth }) => {
         }
       );
       history.push("/");
+      console.log(res);
     }
   };
 
@@ -142,13 +143,9 @@ const CreateCourse = ({ auth }) => {
             <button className="button" type="submit">
               Create Course
             </button>
-            <button
-              className="button button-secondary"
-              href="/"
-              // send user back to courses
-            >
+            <a className="button button-secondary" href="/">
               Cancel
-            </button>
+            </a>
           </div>
         </form>
       </div>

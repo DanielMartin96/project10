@@ -46,9 +46,9 @@ const UserSignIn = ({ handleSignIn, user }) => {
               <button className="button" type="submit">
                 Sign In
               </button>
-              <button className="button button-secondary" href="/">
+              <a className="button button-secondary" href="/">
                 Cancel
-              </button>
+              </a>
             </div>
           </form>
         </div>
