@@ -9,6 +9,7 @@ const UpdateCourse = ({ auth }) => {
   const [description, setDescription] = useState("");
   const [estimatedTime, setEstimatedTime] = useState("");
   const [materialsNeeded, setMaterialsNeeded] = useState("");
+  const [id, setId] = useState(null);
   const [errors, setErrors] = useState(false);
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
@@ -26,6 +27,7 @@ const UpdateCourse = ({ auth }) => {
       setDescription(course.description);
       setEstimatedTime(course.estimatedTime);
       setMaterialsNeeded(course.materialsNeeded);
+      setId(course.id);
       setUser(res.data.user);
     }
 
@@ -162,7 +164,7 @@ const UpdateCourse = ({ auth }) => {
             <button className="button" type="submit">
               Update Course
             </button>
-            <a className="button button-secondary" href="/">
+            <a className="button button-secondary" href={`/courses/${id}`}>
               Cancel
             </a>
           </div>
