@@ -49,7 +49,7 @@ const App = () => {
     setUser(null);
     window.localStorage.removeItem("auth");
     setAuthCred(null);
-    history.push("/signin");
+    history.push("/");
     window.location.reload();
   };
 
